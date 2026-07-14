@@ -3,10 +3,11 @@
 #include <string.h>
 
 void print_square(int height);
+void print_triangle(char *align, int height);
 
 int main(int argc, char *argv[])
 {
-    if (strcmp(argv[1], "square") == 0)
+    if (strcmp(argv[1], "-s") == 0 ||strcmp(argv[1], "-square") == 0)
     {
         if (!( argc == 3 ))
         {
@@ -19,6 +20,19 @@ int main(int argc, char *argv[])
             return 0;
         }
     }
+    else if (strcmp(argv[1], "-t") == 0 ||strcmp(argv[1], "--triangle") == 0)
+    {
+        if (!( argc == 4 ))
+        {
+            printf("Error: printing a triangle requires 3 arguments.\n");
+            return 1;
+        }
+        else
+        {
+            print_triangle(argv[2], atoi(argv[3]));
+            return 0;
+        }
+    }
     else
     {
         printf("Error: shape does not exist\n");
@@ -28,10 +42,23 @@ int main(int argc, char *argv[])
 
 void print_square(int height)
 {
+    for (int i = 0; i < height; i++)
     {
-        for (int i = 0; i < height; i++)
+        for (int j = 0; j < height; j++)
         {
-            for (int j = 0; j < height; j++)
+            printf("#");
+        }
+        printf("\n");
+    }
+}
+
+void print_triangle(char *align, int height)
+{
+    if (strcmp(align, "-l") == 0 ||strcmp(align, "--length") == 0)
+    {
+        for (int i = 1; i <= height; i++)
+        {
+            for (int j = 0; j < i; j++)
             {
                 printf("#");
             }
