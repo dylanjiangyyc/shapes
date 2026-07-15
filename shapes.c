@@ -8,17 +8,12 @@ void print_right_triangle(char *align, int height);
 
 int main(int argc, char *argv[])
 {
-    if (strcmp(argv[1], "-s") == 0 ||strcmp(argv[1], "--square") == 0)
+    if (argc == 3 && (strcmp(argv[1], "-s") == 0 ||strcmp(argv[1], "--square") == 0))
     {
-        if (!( argc == 3 ))
+        if (atoi(argv[2]) <= 0)
         {
-            printf("Error: printing a square requires 2 arguments.\n");
+            printf("Error.\n");
             return 1;
-        }
-        else if (atoi(argv[2]) == 0)
-        {
-            printf("Error: unknown arguments.");
-            return 2;
         }
         else
         {
@@ -26,17 +21,12 @@ int main(int argc, char *argv[])
             return 0;
         }
     }
-    else if (strcmp(argv[1], "-t") == 0 ||strcmp(argv[1], "--triangle") == 0)
+    else if (argc == 4 && (strcmp(argv[1], "-t") == 0 ||strcmp(argv[1], "--triangle") == 0))
     {
-        if (!( argc == 4 ))
+        if (atoi(argv[3]) <= 0)
         {
-            printf("Error: printing a right triangle requires 3 arguments.\n");
+            printf("Error.\n");
             return 1;
-        }
-        else if (atoi(argv[3]) == 0)
-        {
-            printf("Error: unknown arguments.");
-            return 2;
         }
         else
         {
@@ -44,17 +34,12 @@ int main(int argc, char *argv[])
             return 0;
         }
     }
-    else if (strcmp(argv[1], "-r") == 0 || strcmp(argv[1], "--rectangle") == 0)
+    else if ( argc == 4 && (strcmp(argv[1], "-r") == 0 || strcmp(argv[1], "--rectangle") == 0 ))
     {
-        if (!(argc == 4 ))
+        if (atoi(argv[2]) <= 0 || atoi(argv[3]) <= 0)
         {
-            printf("Error: printing a rectangle requires 3 arguments.\n");
+            printf("Error.\n");
             return 1;
-        }
-        else if (atoi(argv[2]) == 0 || atoi(argv[3]) == 0)
-        {
-            printf("Error: unknown arguments.");
-            return 2;
         }
         else
         {
@@ -64,11 +49,10 @@ int main(int argc, char *argv[])
     }
     else
     {
-        printf("Error: shape does not exist\n");
-        return 2;
+        printf("Error.\n");
+        return 1;
     }
 }
-
 void print_square(int length)
 {
     for (int i = 0; i < length; i++)
