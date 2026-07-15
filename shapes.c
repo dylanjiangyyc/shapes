@@ -4,7 +4,7 @@
 
 void print_square(int length);
 void print_rectangle(int length, int width);
-void print_right_triangle(char *align, int height);
+void print_triangle(char *align, int height);
 
 int main(int argc, char *argv[])
 {
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
         }
         else
         {
-            print_right_triangle(argv[2], atoi(argv[3]));
+            print_triangle(argv[2], atoi(argv[3]));
             return 0;
         }
     }
@@ -59,7 +59,7 @@ void print_square(int length)
     {
         for (int j = 0; j < length; j++)
         {
-            printf("#");
+            printf("|_");
         }
         printf("\n");
     }
@@ -71,13 +71,13 @@ void print_rectangle(int length, int width)
     {
         for (int j = 0; j < length; j++)
         {
-            printf("#");
+            printf("|_");
         }
         printf("\n");
     }
 }
 
-void print_right_triangle(char *align, int height)
+void print_triangle(char *align, int height)
 {
     if (strcmp(align, "-l") == 0 ||strcmp(align, "--left") == 0)
     {
@@ -85,7 +85,37 @@ void print_right_triangle(char *align, int height)
         {
             for (int j = 0; j < i; j++)
             {
-                printf("#");
+                printf("|_");
+            }
+            printf("\n");
+        }
+    }
+    else if (strcmp(align, "-r") == 0 || strcmp(align, "--right") == 0)
+    {
+        for (int i = 1; i <= height; i++)
+        {
+            for (int j = height - i; j >= 0; j--)
+            {
+                printf("  ");
+            }
+            for (int j = 0; j < i; j++)
+            {
+                printf("|_");
+            }
+            printf("\n");
+        }
+    }
+    else if (strcmp(align, "-i") == 0 || strcmp(align, "--isosceles") == 0)
+    {
+        for (int i = 1; i <= height; i++)
+        {
+            for (int j = height - i; j >= 0; j--)
+            {
+                printf(" ");
+            }
+            for (int j = 0; j < i; j++)
+            {
+                printf("|_");
             }
             printf("\n");
         }
