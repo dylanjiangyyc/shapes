@@ -94,7 +94,7 @@ void print_triangle(char *align, int height)
     {
         for (int i = 1; i <= height; i++)
         {
-            for (int j = height - i; j >= 0; j--)
+            for (int j = height - i; j > 0; j--)
             {
                 printf("  ");
             }
@@ -109,9 +109,28 @@ void print_triangle(char *align, int height)
     {
         for (int i = 1; i <= height; i++)
         {
-            for (int j = height - i; j >= 0; j--)
+            for (int j = height - i; j > 0; j--)
             {
                 printf(" ");
+            }
+            for (int j = 0; j < i; j++)
+            {
+                printf("|_");
+            }
+            printf("\n");
+        }
+    }
+    else if (strcmp(align, "-I") == 0 || strcmp(align, "--Isosceles") == 0)
+    {
+        for (int i = 1; i <= height; i++)
+        {
+            for (int j = height - i; j > 0; j--)
+            {
+                printf("  ");
+            }
+            for (int j = 0; j < i - 1; j++)
+            {
+                printf("|_");
             }
             for (int j = 0; j < i; j++)
             {
