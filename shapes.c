@@ -120,7 +120,7 @@ void print_triangle(char *align, int height)
             printf("\n");
         }
     }
-    else if (strcmp(align, "-I") == 0 || strcmp(align, "--Isosceles") == 0)
+    else if (strcmp(align, "-c") == 0 || strcmp(align, "--center") == 0)
     {
         for (int i = 1; i <= height; i++)
         {
